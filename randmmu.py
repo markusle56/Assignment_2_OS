@@ -1,3 +1,4 @@
+import random
 from mmu import MMU
 
 class RandMMU(MMU):
