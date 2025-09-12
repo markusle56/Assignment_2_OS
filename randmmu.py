@@ -10,13 +10,16 @@ class RandMMU(MMU):
         self.disk_writes = 0
         self.mode = "debug"
 
-
     def set_debug(self):
         self.mode = "debug"
 
     def reset_debug(self):
         self.mode = "quiet"
 
+    def print_debug(self, msg):
+        if self.mode == "debug":
+            print(msg)
+            
     def read_memory(self, page_number):
         if page_number in self.frame:
             self.print_debug(f"READ: Page {page_number} already in frame (HIT).")
@@ -41,6 +44,7 @@ class RandMMU(MMU):
             return 
         
         self.print_debug(f"WRITE: Page {page_number} not in frame (FAULT).")
+        self.disk_reads += 1
         if len(self.frame) >= self.max_frame:
             overwrite_page = random.randint(0, self.max_frame - 1)
             self.print_debug(f"      Drop page {self.frame[overwrite_page]}")
