@@ -1,8 +1,9 @@
 from mmu import MMU
 
-class RandMMU(MMU):
+
+class ClockMMU(MMU):
     def __init__(self, frames):
-        # TODO: Constructor logic for RandMMU
+        # TODO: Constructor logic for EscMMU
         pass
 
     def set_debug(self):
