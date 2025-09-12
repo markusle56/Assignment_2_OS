@@ -21,6 +21,11 @@ class RandMMU(MMU):
         if self.mode == "debug":
             print(msg)
             
+
+    def print_debug(self, msg):
+        if self.mode == "debug":
+            print(msg)
+            
     def read_memory(self, page_number):
         if page_number in self.frame:
             self.print_debug(f"READ: Page {page_number} already in frame (HIT).")
